@@ -1,139 +1,159 @@
-alt = <Key.f1: 0>
+pynput.keyboard.Key — Special Key Reference
+=============================================
+Generated from pynput 1.8.2 on Windows.
+Each entry shows: name = <Key.name: virtual_key_code>
 
+--- Modifier Keys ---
+
+alt = <Key.alt: <18>>
     A generic Alt key. This is a modifier.
 
-alt_gr = <Key.f1: 0>
-
-    The AltGr key. This is a modifier.
-
-alt_l = <Key.f1: 0>
-
+alt_l = <Key.alt_l: <164>>
     The left Alt key. This is a modifier.
 
-alt_r = <Key.f1: 0>
-
+alt_r = <Key.alt_r: <165>>
     The right Alt key. This is a modifier.
 
-backspace = <Key.f1: 0>
+alt_gr = <Key.alt_gr: <165>>
+    The AltGr key. This is a modifier.
 
-    The Backspace key.
-
-caps_lock = <Key.f1: 0>
-
+caps_lock = <Key.caps_lock: <20>>
     The CapsLock key.
 
-cmd = <Key.f1: 0>
+cmd = <Key.cmd: <91>>
+    A generic command button (Super/Windows/Command key). This may be a modifier.
 
-    A generic command button. On PC platforms, this corresponds to the Super key or Windows key, and on Mac it corresponds to the Command key. This may be a modifier.
+cmd_r = <Key.cmd_r: <92>>
+    The right command button (Super/Windows/Command key). This may be a modifier.
 
-cmd_l = <Key.f1: 0>
-
-    The left command button. On PC platforms, this corresponds to the Super key or Windows key, and on Mac it corresponds to the Command key. This may be a modifier.
-
-cmd_r = <Key.f1: 0>
-
-    The right command button. On PC platforms, this corresponds to the Super key or Windows key, and on Mac it corresponds to the Command key. This may be a modifier.
-
-ctrl = <Key.f1: 0>
-
+ctrl = <Key.ctrl: <17>>
     A generic Ctrl key. This is a modifier.
 
-ctrl_l = <Key.f1: 0>
-
+ctrl_l = <Key.ctrl_l: <162>>
     The left Ctrl key. This is a modifier.
 
-ctrl_r = <Key.f1: 0>
-
+ctrl_r = <Key.ctrl_r: <163>>
     The right Ctrl key. This is a modifier.
 
-delete = <Key.f1: 0>
-
-    The Delete key.
-
-down = <Key.f1: 0>
-
-    A down arrow key.
-
-end = <Key.f1: 0>
-
-    The End key.
-
-enter = <Key.f1: 0>
-
-    The Enter or Return key.
-
-esc = <Key.f1: 0>
-
-    The Esc key.
-
-f1 = <Key.f1: 0>
-
-    The function keys. F1 to F20 are defined.
-
-home = <Key.f1: 0>
-
-    The Home key.
-
-insert = <Key.f1: 0>
-
-    The Insert key. This may be undefined for some platforms.
-
-left = <Key.f1: 0>
-
-    A left arrow key.
-
-menu = <Key.f1: 0>
-
-    The Menu key. This may be undefined for some platforms.
-
-num_lock = <Key.f1: 0>
-
-    The NumLock key. This may be undefined for some platforms.
-
-page_down = <Key.f1: 0>
-
-    The PageDown key.
-
-page_up = <Key.f1: 0>
-
-    The PageUp key.
-
-pause = <Key.f1: 0>
-
-    The Pause/Break key. This may be undefined for some platforms.
-
-print_screen = <Key.f1: 0>
-
-    The PrintScreen key. This may be undefined for some platforms.
-
-right = <Key.f1: 0>
-
-    A right arrow key.
-
-scroll_lock = <Key.f1: 0>
-
-    The ScrollLock key. This may be undefined for some platforms.
-
-shift = <Key.f1: 0>
-
+shift = <Key.shift: <160>>
     A generic Shift key. This is a modifier.
 
-shift_l = <Key.f1: 0>
-
-    The left Shift key. This is a modifier.
-
-shift_r = <Key.f1: 0>
-
+shift_r = <Key.shift_r: <161>>
     The right Shift key. This is a modifier.
 
-space = <Key.f1: 0>
+--- Common Keys ---
 
+backspace = <Key.backspace: <8>>
+    The Backspace key.
+
+delete = <Key.delete: <46>>
+    The Delete key.
+
+enter = <Key.enter: <13>>
+    The Enter or Return key.
+
+esc = <Key.esc: <27>>
+    The Esc key.
+
+insert = <Key.insert: <45>>
+    The Insert key. This may be undefined for some platforms.
+
+menu = <Key.menu: <93>>
+    The Menu key. This may be undefined for some platforms.
+
+space = <Key.space: ' '>
     The Space key.
 
-tab = <Key.f1: 0>
-
+tab = <Key.tab: <9>>
     The Tab key.
 
-up = <Key.f1: 0>
+--- Navigation Keys ---
 
+down = <Key.down: <40>>
+    A down arrow key.
+
+end = <Key.end: <35>>
+    The End key.
+
+home = <Key.home: <36>>
+    The Home key.
+
+left = <Key.left: <37>>
+    A left arrow key.
+
+page_down = <Key.page_down: <34>>
+    The PageDown key.
+
+page_up = <Key.page_up: <33>>
+    The PageUp key.
+
+right = <Key.right: <39>>
+    A right arrow key.
+
+up = <Key.up: <38>>
     An up arrow key.
+
+--- Function Keys ---
+
+f1 = <Key.f1: <112>>
+f2 = <Key.f2: <113>>
+f3 = <Key.f3: <114>>
+f4 = <Key.f4: <115>>
+f5 = <Key.f5: <116>>
+f6 = <Key.f6: <117>>
+f7 = <Key.f7: <118>>
+f8 = <Key.f8: <119>>
+f9 = <Key.f9: <120>>
+f10 = <Key.f10: <121>>
+f11 = <Key.f11: <122>>
+f12 = <Key.f12: <123>>
+f13 = <Key.f13: <124>>
+f14 = <Key.f14: <125>>
+f15 = <Key.f15: <126>>
+f16 = <Key.f16: <127>>
+f17 = <Key.f17: <128>>
+f18 = <Key.f18: <129>>
+f19 = <Key.f19: <130>>
+f20 = <Key.f20: <131>>
+f21 = <Key.f21: <132>>
+f22 = <Key.f22: <133>>
+f23 = <Key.f23: <134>>
+f24 = <Key.f24: <135>>
+    The function keys. F1 to F24 are defined.
+
+--- Lock & System Keys ---
+
+num_lock = <Key.num_lock: <144>>
+    The NumLock key. This may be undefined for some platforms.
+
+pause = <Key.pause: <19>>
+    The Pause/Break key. This may be undefined for some platforms.
+
+print_screen = <Key.print_screen: <44>>
+    The PrintScreen key. This may be undefined for some platforms.
+
+scroll_lock = <Key.scroll_lock: <145>>
+    The ScrollLock key. This may be undefined for some platforms.
+
+--- Media Keys ---
+
+media_play_pause = <Key.media_play_pause: <179>>
+    The Play/Pause media key.
+
+media_stop = <Key.media_stop: <178>>
+    The Stop media key.
+
+media_volume_mute = <Key.media_volume_mute: <173>>
+    The Mute volume key.
+
+media_volume_down = <Key.media_volume_down: <174>>
+    The Volume Down key.
+
+media_volume_up = <Key.media_volume_up: <175>>
+    The Volume Up key.
+
+media_previous = <Key.media_previous: <177>>
+    The Previous Track media key.
+
+media_next = <Key.media_next: <176>>
+    The Next Track media key.
