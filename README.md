@@ -1,6 +1,6 @@
 # Keylogger
 
-A Python-based keyboard event recorder built with the [`pynput`](https://pypi.org/project/pynput/) library, created for educational and authorized security-research purposes as part of the **CFET Internship**.
+A Python-based keyboard event recorder built with the [`pynput`](https://pypi.org/project/pynput/) library, created for educational and authorized security-research purposes.
 
 > **⚠️ Disclaimer:** This project is intended **strictly** for educational and authorized security-research purposes. Unauthorized use of keylogging software is illegal and unethical. Always obtain explicit consent before running this tool on any system.
 

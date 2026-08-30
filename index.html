@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keylogger — Python Keyboard Event Recorder</title>
+  <meta name="description" content="A Python-based keyboard event recorder built with pynput. Educational project for learning system-level programming.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⌨</text></svg>">
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="#" class="nav-logo"><span class="accent">&gt;_</span> keylogger</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#workflow">Workflow</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#demo">Demo</a></li>
+        <li><a href="#setup">Setup</a></li>
+        <li>
+          <a href="https://github.com/rohanjha-rj/keylogger" target="_blank" rel="noopener" class="nav-github">
+            <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            GitHub
+          </a>
+        </li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero" id="hero">
+    <div class="container hero-content">
+      <div class="hero-eyebrow">Educational Project</div>
+      <h1>KEY<span class="thin">LOGGER</span></h1>
+      <p class="hero-desc">A Python-based keyboard event recorder built with <code>pynput</code>. Captures keystrokes with buffered I/O, smart key mapping, and graceful shutdown.</p>
+      <div class="hero-actions">
+        <a href="https://github.com/rohanjha-rj/keylogger" target="_blank" rel="noopener" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          View on GitHub
+        </a>
+        <a href="#demo" class="btn btn-ghost">Try Live Demo ↓</a>
+      </div>
+
+      <div class="hero-terminal fade-in">
+        <div class="terminal-bar">
+          <span class="terminal-dot"></span>
+          <span class="terminal-dot"></span>
+          <span class="terminal-dot"></span>
+        </div>
+        <div class="terminal-body">
+          <div><span class="prompt">$</span> <span class="cmd">python keylogger.py</span></div>
+          <div><span class="prompt">[listening]</span> recording keystrokes to log.txt...</div>
+          <div><span class="prompt">[buffer]</span> flushed 10 characters to disk</div>
+          <div><span class="prompt">[exit]</span> escape pressed — shutting down<span class="typing-cursor"></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ABOUT ========== -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-content fade-in">
+        <div class="about-text">
+          <span class="section-label">About</span>
+          <h2 class="section-title">What does it do?</h2>
+          <p>This script silently monitors keyboard events in the background using the <code>pynput</code> library's OS-level hooks. Every keystroke is captured, classified, and written to a local log file.</p>
+          <p>Regular characters are logged as-is. Special keys like Space and Enter are translated into readable output. Modifier keys (Shift, Ctrl, Alt) are filtered out. Non-printable keys are tagged in bracket notation like <code>[BACKSPACE]</code> or <code>[F5]</code>.</p>
+          <p>The result is a clean, human-readable transcript of everything typed — with minimal disk overhead thanks to buffered I/O.</p>
+        </div>
+        <div class="about-stats">
+          <div class="stat-card">
+            <div class="stat-value">~76</div>
+            <div class="stat-label">Lines of code</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">1</div>
+            <div class="stat-label">Dependency</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">10x</div>
+            <div class="stat-label">Fewer disk writes</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">60+</div>
+            <div class="stat-label">Keys handled</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== WORKFLOW ========== -->
+  <section class="workflow" id="workflow">
+    <div class="container">
+      <span class="section-label fade-in">Workflow</span>
+      <h2 class="section-title fade-in">How it works</h2>
+      <p class="section-desc fade-in">Four stages from keypress to log file.</p>
+
+      <div class="workflow-steps">
+        <div class="step-card fade-in">
+          <div class="step-number">Listen</div>
+          <h3>Capture</h3>
+          <p><code>keyboard.Listener</code> spawns a background thread that hooks into the OS keyboard event stream. Every physical key press fires the callback.</p>
+        </div>
+        <div class="step-card fade-in">
+          <div class="step-number">Classify</div>
+          <h3>Filter &amp; Map</h3>
+          <p>Each key is classified: modifiers are ignored, special keys are mapped to readable strings, and printable characters use their <code>.char</code> attribute.</p>
+        </div>
+        <div class="step-card fade-in">
+          <div class="step-number">Buffer</div>
+          <h3>Accumulate</h3>
+          <p>Keystrokes accumulate in an in-memory list. Once 10 characters are buffered, they're flushed to disk in a single write — reducing I/O overhead.</p>
+        </div>
+        <div class="step-card fade-in">
+          <div class="step-number">Log</div>
+          <h3>Write to File</h3>
+          <p>Buffered content is appended to <code>log.txt</code> with UTF-8 encoding. The buffer is also flushed on graceful exit via Escape or Ctrl+C.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FEATURES ========== -->
+  <section class="features" id="features">
+    <div class="container">
+      <span class="section-label fade-in">Features</span>
+      <h2 class="section-title fade-in">Built with care</h2>
+      <p class="section-desc fade-in">Clean, robust, and efficient by design.</p>
+
+      <div class="features-grid">
+        <div class="feature-card fade-in">
+          <div class="feature-icon">⚡</div>
+          <h3>Buffered I/O</h3>
+          <p>Keystrokes are batched in memory and flushed every 10 characters, dramatically reducing disk writes compared to per-keystroke file access.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon">🔤</div>
+          <h3>Smart Key Handling</h3>
+          <p>Uses <code>pynput</code> enums and the <code>key.char</code> attribute instead of brittle string parsing. Unmapped keys are tagged in <code>[BRACKET]</code> notation.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon">🛑</div>
+          <h3>Graceful Exit</h3>
+          <p>Press Escape to stop cleanly — the remaining buffer is flushed before shutdown. Ctrl+C is also handled with a guaranteed final flush.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon">🛡️</div>
+          <h3>Error Safety</h3>
+          <p>A try/except wraps the callback to prevent silent listener-thread crashes. The main block uses try/finally for guaranteed cleanup.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== LIVE DEMO ========== -->
+  <section class="demo" id="demo">
+    <div class="container">
+      <span class="section-label fade-in">Live Demo</span>
+      <h2 class="section-title fade-in">Try it yourself</h2>
+      <p class="section-desc fade-in">Type in the left pane — the right pane shows what the Python keylogger would log.</p>
+
+      <div class="demo-container fade-in">
+        <div class="demo-header">
+          <div class="demo-header-left">
+            <span class="demo-indicator"></span>
+            <span class="demo-header-label">keylogger simulation</span>
+          </div>
+          <button class="demo-clear" id="demoClear">Clear</button>
+        </div>
+        <div class="demo-body">
+          <div class="demo-input-area">
+            <span class="demo-pane-label">Your Input</span>
+            <textarea class="demo-input" id="demoInput" placeholder="Start typing here..." spellcheck="false" autocomplete="off"></textarea>
+          </div>
+          <div class="demo-output-area">
+            <span class="demo-pane-label">Log Output</span>
+            <div class="demo-output" id="demoOutput"></div>
+          </div>
+        </div>
+        <div class="demo-footer">
+          <span>Press special keys to see how they're logged</span>
+          <span id="demoCount">0 keystrokes captured</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SETUP ========== -->
+  <section class="setup" id="setup">
+    <div class="container">
+      <span class="section-label fade-in">Setup</span>
+      <h2 class="section-title fade-in">Get started</h2>
+      <p class="section-desc fade-in">Clone, install, run — three steps.</p>
+
+      <div class="setup-steps">
+        <div class="code-block fade-in">
+          <div class="code-block-header">
+            <span class="code-block-title">1 — Clone &amp; Setup</span>
+            <button class="code-copy" data-target="setup-code-1">Copy</button>
+          </div>
+          <pre><code id="setup-code-1"><span class="comment"># Clone the repository</span>
+<span class="cmd-prompt">$</span> git clone https://github.com/rohanjha-rj/keylogger.git
+<span class="cmd-prompt">$</span> cd keylogger
+
+<span class="comment"># Create virtual environment</span>
+<span class="cmd-prompt">$</span> python -m venv .venv
+<span class="cmd-prompt">$</span> .venv\Scripts\activate</code></pre>
+        </div>
+
+        <div class="code-block fade-in">
+          <div class="code-block-header">
+            <span class="code-block-title">2 — Install dependencies</span>
+            <button class="code-copy" data-target="setup-code-2">Copy</button>
+          </div>
+          <pre><code id="setup-code-2"><span class="cmd-prompt">$</span> pip install -r requirements.txt</code></pre>
+        </div>
+
+        <div class="code-block fade-in">
+          <div class="code-block-header">
+            <span class="code-block-title">3 — Run</span>
+            <button class="code-copy" data-target="setup-code-3">Copy</button>
+          </div>
+          <pre><code id="setup-code-3"><span class="cmd-prompt">$</span> python keylogger.py
+<span class="comment"># Press Escape to stop recording</span></code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== KEY REFERENCE ========== -->
+  <section class="reference" id="reference">
+    <div class="container">
+      <span class="section-label fade-in">Reference</span>
+      <h2 class="section-title fade-in">Key behavior</h2>
+      <p class="section-desc fade-in">How each key type is handled by the logger.</p>
+
+      <div class="ref-table-wrap fade-in">
+        <table class="ref-table">
+          <thead>
+            <tr>
+              <th>Key Pressed</th>
+              <th>Logged As</th>
+              <th>Note</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="key-name">a, Z, 5, @</td>
+              <td class="key-output">the character itself</td>
+              <td class="key-note">via key.char attribute</td>
+            </tr>
+            <tr>
+              <td class="key-name">Space</td>
+              <td class="key-output">" "</td>
+              <td class="key-note">space character</td>
+            </tr>
+            <tr>
+              <td class="key-name">Enter</td>
+              <td class="key-output">\n</td>
+              <td class="key-note">newline</td>
+            </tr>
+            <tr>
+              <td class="key-name">Tab</td>
+              <td class="key-output">\t</td>
+              <td class="key-note">tab character</td>
+            </tr>
+            <tr>
+              <td class="key-name">Backspace</td>
+              <td class="key-output">[BACKSPACE]</td>
+              <td class="key-note">bracket notation</td>
+            </tr>
+            <tr>
+              <td class="key-name">Delete, Home, F5…</td>
+              <td class="key-output">[DELETE], [HOME], [F5]</td>
+              <td class="key-note">bracket notation for all unmapped specials</td>
+            </tr>
+            <tr>
+              <td class="key-name">Shift, Ctrl, Alt, Cmd</td>
+              <td class="key-output">—</td>
+              <td class="key-note">silently ignored</td>
+            </tr>
+            <tr>
+              <td class="key-name">Escape</td>
+              <td class="key-output">—</td>
+              <td class="key-note">stops the program</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <span class="accent">&gt;_</span> keylogger
+      </div>
+      <ul class="footer-links">
+        <li><a href="https://github.com/rohanjha-rj/keylogger" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="#hero">Back to top</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
